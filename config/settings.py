@@ -168,11 +168,11 @@ SIMPLE_JWT = {
 }
 
 
-CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", default="redis://localhost:6379")
+CELERY_BROKER_URL = os.getenv("CELERY_BROKER_URL", default="redis://redis:6379")
 
 # URL-адрес брокера результатов, также Redis
 CELERY_RESULT_BACKEND = os.getenv(
-    "CELERY_RESULT_BACKEND", default="redis://localhost:6379"
+    "CELERY_RESULT_BACKEND", default="redis://redis:6379"
 )
 
 # Часовой пояс для работы Celery
