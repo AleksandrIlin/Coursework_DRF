@@ -69,10 +69,10 @@ jobs:
           envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
           envkey_POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
           envkey_POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
-          envkey_REDIS_URL: ${{ secrets.REDIS_URL }}
+          envkey_REDIS_URL: ${{ secrets.CELERY_RESULT_BACKEND }}
           envkey_ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
           envkey_ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-          envkey_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          envkey_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           envkey_CELERY_BROKER_URL: ${{ secrets.CELERY_BROKER_URL }}
 
       - name: Run tests
