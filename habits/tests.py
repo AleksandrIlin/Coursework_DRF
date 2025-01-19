@@ -22,6 +22,7 @@ class HabitTestCase(APITestCase):
         """
         Тестирование создания привычки
         """
+
         data = {
             "time": "2024-12-06 10:00",
             "action": "Test",
@@ -43,7 +44,7 @@ class HabitTestCase(APITestCase):
             action="Unpleasant Habit",
             periodicity="every day",
             time_to_complete=1,
-            is_pleasant=False,  # Неприятная привычка
+            is_pleasant=False,
         )
         data = {
             "time": "2024-12-06 10:00",
