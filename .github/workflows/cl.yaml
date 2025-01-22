@@ -84,11 +84,10 @@ jobs:
           sudo apt-get install -y postgresql-client
           sudo service postgresql start
           sudo -u postgres psql -c "ALTER USER postgres PASSWORD '12345';"
-          sudo -u postgres psql -c "CREATE DATABASE habit;"
+          sudo -u postgres psql -c "CREATE DATABASE lesson;"
           sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD '12345';"
-          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE habit TO runner;"
+          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE lesson TO runner;"
           sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
-          echo "DATABASE_URL=postgres://runner:12345@localhost/habit" >> $GITHUB_ENV
 
       - name: Run makemigrations
         run: |
