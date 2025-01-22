@@ -81,7 +81,6 @@ jobs:
       - name: Run tests
         run: |
           cat .env
-          sudo systemctl status postgresql
           poetry run python manage.py test
 
   build:
