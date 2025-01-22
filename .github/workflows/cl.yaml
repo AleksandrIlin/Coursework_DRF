@@ -80,6 +80,8 @@ jobs:
 
       - name: Run tests
         run: |
+          psql -U postgres
+          sudo systemctl status postgresql
           poetry run python manage.py test
 
   build:
