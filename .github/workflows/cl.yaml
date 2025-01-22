@@ -70,33 +70,13 @@ jobs:
           envkey_POSTGRES_DB: ${{ secrets.POSTGRES_DB }}
           envkey_POSTGRES_USER: ${{ secrets.POSTGRES_USER }}
           envkey_POSTGRES_PASSWORD: ${{ secrets.POSTGRES_PASSWORD }}
-          envkey_POSTGRES_HOST: ${{ secrets.POSTGRES_HOST }}
+          envkey_POSTGRES_HOST: "db"# ${{ secrets.POSTGRES_HOST }}
           envkey_POSTGRES_PORT: ${{ secrets.POSTGRES_PORT }}
           envkey_REDIS_URL: ${{ secrets.CELERY_RESULT_BACKEND }}
           envkey_ADMIN_EMAIL: ${{ secrets.ADMIN_EMAIL }}
           envkey_ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           envkey_TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_TOKEN }}
           envkey_CELERY_BROKER_URL: ${{ secrets.CELERY_BROKER_URL }}
-
-#      - name: Set up PostgreSQL
-#        run: |
-#          sudo apt-get update
-#          sudo apt-get install -y postgresql-client
-#          sudo service postgresql start
-#          sudo -u postgres psql -c "ALTER USER postgres PASSWORD 12345;"
-#          sudo -u postgres psql -c "CREATE DATABASE habit;"
-#          sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD 12345;"
-#          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE habit TO runner;"
-#          sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
-#
-#      - name: Run makemigrations
-#        run: |
-#          poetry run python manage.py makemigrations
-#
-#      - name: Run migrate
-#        run: |
-#          poetry run python manage.py migrate
-
 
       - name: Run tests
         run: |
