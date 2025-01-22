@@ -80,12 +80,16 @@ jobs:
 
       - name: Run tests
         run: |
-          sudo systemctl start postgresql
+          
+          sudo apt-get update
+          sudo apt-get install -y postgresql-client
+          sudo service postgresql start
           sudo -u postgres psql -c "ALTER USER postgres PASSWORD '12345';"
           sudo -u postgres psql -c "CREATE DATABASE habit;"
           sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD '12345';"
           sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE habit TO runner;"
           sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
+          sudo sed -i 's/peer authentication/trust/g' /root/Coursework_DRF/.pg_data/pg_hba.conf
           sudo systemctl status postgresql
           
           poetry run python manage.py test
