@@ -81,7 +81,13 @@ jobs:
       - name: Run tests
         run: |
           sudo systemctl start postgresql
+          sudo -u postgres psql -c "ALTER USER postgres PASSWORD '12345';"
+          sudo -u postgres psql -c "CREATE DATABASE habit;"
+          sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD '12345';"
+          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE habit TO runner;"
+          sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
           sudo systemctl status postgresql
+          
           poetry run python manage.py test
 
   build:
