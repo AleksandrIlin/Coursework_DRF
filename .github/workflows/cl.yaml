@@ -87,7 +87,7 @@ jobs:
           sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE habit TO runner;"
           sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
           sudo systemctl status postgresql
-          netstat -plnt | grep postgres
+          
           
           poetry run python manage.py test
 
