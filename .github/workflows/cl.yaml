@@ -83,10 +83,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y postgresql-client
           sudo service postgresql start
-          sudo -u postgres psql -c "ALTER USER "${{ secrets.POSTGRES_USER }}" PASSWORD "12345";"
-          sudo -u postgres psql -c "CREATE DATABASE "${{ secrets.POSTGRES_DB }}";"
-          sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD "${{ secrets.POSTGRES_PASSWORD }}";"
-          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE "${{ secrets.POSTGRES_DB }}" TO runner;"
+          sudo -u postgres psql -c "ALTER USER "postgres" PASSWORD "12345";"
+          sudo -u postgres psql -c "CREATE DATABASE "habit";"
+          sudo -u postgres psql -c "CREATE ROLE runner WITH LOGIN PASSWORD "12345";"
+          sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE "habit" TO runner;"
           sudo -u postgres psql -c "GRANT CREATE ON SCHEMA public TO runner;"
 
       - name: Run makemigrations
