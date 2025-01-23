@@ -112,7 +112,7 @@ jobs:
 
       - name: Build Docker images
         run: |
-          docker-compose build
+          docker compose build
 
   deploy:
     runs-on: ubuntu-latest
